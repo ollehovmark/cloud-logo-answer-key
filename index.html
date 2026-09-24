@@ -247,20 +247,29 @@
 
   .card-info {
     position: absolute;
-    bottom: 8px;
-    right: 8px;
-    width: 15px;
-    height: 15px;
+    top: 8px;
+    right: 9px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: var(--brand-soft);
-    color: var(--brand);
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
     font-family: 'Plex Mono', monospace;
-    font-size: 9px;
+    font-size: 8px;
     font-style: italic;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0.6;
+    transition: opacity 0.12s ease, border-color 0.12s ease;
+  }
+
+  .card:hover .card-info {
+    opacity: 1;
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   .card-index {
