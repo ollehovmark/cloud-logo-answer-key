@@ -28,7 +28,7 @@
     font-display: swap;
   }
 
-  /* Värna brand palette: navy #1F314F, mist #F2F8FD, blush #FAE1E7, rose #D9456F, sky #476BB0 */
+  /* Värna brand palette, locked regardless of viewer theme: navy #1F314F, mist #F2F8FD, blush #FAE1E7, rose #D9456F, sky #476BB0 */
   :root {
     --bg: #F2F8FD;
     --surface: #ffffff;
@@ -46,46 +46,6 @@
     --aws: #b45900;
     --aws-soft: #fdf0e3;
     --shadow: 0 1px 2px rgba(31, 49, 79, 0.05), 0 8px 20px -12px rgba(31, 49, 79, 0.2);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #1F314F;
-      --surface: #263e63;
-      --surface-sunken: #16233a;
-      --ink: #F2F8FD;
-      --ink-soft: #a9bcd6;
-      --border: #35507a;
-      --brand: #f2799c;
-      --brand-soft: #3a2836;
-      --brand-2: #8fb0e6;
-      --gcp: #8ab4f8;
-      --gcp-soft: #24304a;
-      --azure: #6cc0ff;
-      --azure-soft: #1c3348;
-      --aws: #ffb757;
-      --aws-soft: #3a2a14;
-      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.55);
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --bg: #1F314F;
-    --surface: #263e63;
-    --surface-sunken: #16233a;
-    --ink: #F2F8FD;
-    --ink-soft: #a9bcd6;
-    --border: #35507a;
-    --brand: #f2799c;
-    --brand-soft: #3a2836;
-    --brand-2: #8fb0e6;
-    --gcp: #8ab4f8;
-    --gcp-soft: #24304a;
-    --azure: #6cc0ff;
-    --azure-soft: #1c3348;
-    --aws: #ffb757;
-    --aws-soft: #3a2a14;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px -12px rgba(0, 0, 0, 0.55);
   }
 
   * { box-sizing: border-box; }
@@ -119,20 +79,15 @@
 
   .hero-balloon {
     position: absolute;
-    top: 18px;
-    right: 22px;
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    background: var(--surface);
-    box-shadow: var(--shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(9deg);
+    top: 22px;
+    right: 28px;
+    width: 60px;
+    display: block;
+    filter: drop-shadow(0 6px 10px rgba(31, 49, 79, 0.18));
+    transform: rotate(8deg);
   }
 
-  .hero-balloon svg { width: 44px; height: auto; display: block; }
+  .hero-balloon svg { width: 100%; height: auto; display: block; }
 
   .brandmark {
     display: block;
@@ -329,9 +284,19 @@
     font-size: 14px;
   }
 
-  .empty-state svg { width: 30px; height: auto; opacity: 0.6; }
-
   .empty-state.visible { display: flex; }
+
+  .empty-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--brand-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .empty-badge svg { width: 30px; height: auto; display: block; }
 
   footer {
     margin-top: 56px;
@@ -361,9 +326,8 @@
   @media (max-width: 520px) {
     h1 { font-size: 26px; }
     .card-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
-    header.page-head { padding: 26px 20px 88px; }
-    .hero-balloon { top: auto; bottom: 20px; right: 20px; width: 64px; height: 64px; }
-    .hero-balloon svg { width: 34px; }
+    header.page-head { padding: 26px 20px 74px; }
+    .hero-balloon { top: auto; bottom: 20px; right: 24px; width: 48px; }
   }
 </style>
 
@@ -1266,7 +1230,8 @@
     </div>
   </section>
 
-  <div class="empty-state" id="empty"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.66724137931035 265.54137931034484" width="193" height="266">
+  <div class="empty-state" id="empty">
+    <span class="empty-badge"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.66724137931035 265.54137931034484" width="193" height="266">
 	<defs>
 		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
 			<path d="m0.07 0h192.19v264.88h-192.19z"/>
@@ -1305,7 +1270,9 @@
 			</g>
 		</g>
 	</g>
-</svg><span>No matching service.</span></div>
+</svg></span>
+    <span>No matching service.</span>
+  </div>
 
   <footer>
     <span class="footer-badge"><svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192.66724137931035 265.54137931034484" width="193" height="266">
